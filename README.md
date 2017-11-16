@@ -5,4 +5,4 @@ Compile:
 g++ tile.cpp -o tile `Magick++-config --cppflags --cxxflags --ldflags --libs` `pkg-config opencv --libs --cflags`
 
 Run:
-./tile
+./tile <filename>
