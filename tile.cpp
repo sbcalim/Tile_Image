@@ -25,6 +25,19 @@ const std::string name_array[] = { "1.jpg",  "2.jpg",  "3.jpg",  "4.jpg",  "5.jp
 
 /* 
  * ===  FUNCTION  ======================================================================
+ *         Name:  help
+ *  Description:  Explains usage
+ * =====================================================================================
+ */
+    void
+help ( std::string filename )
+{
+    std::cout << "Usage: " << std::endl;
+    std::cout << filename << " filename" << std::endl;
+}		/* -----  end of function help  ----- */
+
+/* 
+ * ===  FUNCTION  ======================================================================
  *         Name:  resizeTile
  *  Description:  Resize the given matrix image according to given x and y values
  * =====================================================================================
@@ -82,12 +95,18 @@ divide ( cv::Mat image, int number_of_rows, int number_of_columns, int x, int y 
     int
 main ( int argc, char *argv[] )
 {
+    if( argc != 2 )
+    {
+        help( argv[0] );
+        exit( 0 );
+    }
+        
     Magick::InitializeMagick( *argv );  //Magick constructor
 
 
     /* ****************************************************************** */
     /****** Change this line to read different image in any format ********/
-    Magick::Image image( "image.pdf" ); //Read image
+    Magick::Image image( argv[1] ); //Read image
 
 
     int w = image.columns( );               // w : Width of the given image. Will be used to create OpenCV matrix
